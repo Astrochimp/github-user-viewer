@@ -2,36 +2,42 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [repos, setRepos] = useState<[]>([]);
+  const [ghuser, setGhuser] = useState<{}>();
   const user = 'Astrochimp';
+  const githubusers = ['Astrochimp', 'delucis', 'fflaten', 'AlexTMjugador', 'subhamBharadwaz', 'lmatteis', 'leerob', 'shadcn'];
 
   useEffect(() => {
     async function getUser() {
-      const res = await fetch(`https://api.github.com/users/${user}/repos?page=1&per_page=20&sort=updated`);
+      const res = await fetch(`https://api.github.com/users/${user}`);
       const data = await res.json();
-      setRepos(data);
+      console.log('data', data);
+      setGhuser(data);
     }
 
     getUser();
   }, []);
 
   return (
-    <div className="text-left">
-      <h1 className="text-6xl font-bold underline">{user} Repos</h1>
-      <div className='mt-10'>
-        {repos.map((rep) => {
-          console.log('rep', rep);
-          return (
-            <div className="my-5">
-              <h2 className="text-2xl font-bold">{rep.full_name}</h2>
-              <p>
-                <a href={rep.html_url} target="_blank">{rep.html_url}</a>
-              </p>
-              <div className="inline-block rounded-md py2 px-2 text-sm bg-purple-800 text-zinc-200">{rep.language}</div>
-              <div>⭐️{rep.stargazers_count}</div>
+    <div className="text-left m-0 p0">
+      <div className='mt-10 m-0 bg-slate-900 text-zinc-200 p-5'>
+        {ghuser ? (
+          <>
+            <div className="w-full flex flex-row justify-center items-center">
+              <div className="p-0">
+                <img className='w-18 h-18 rounded-full' src={ghuser.avatar_url} alt={ghuser.name} width="120" height="120" />
+              </div>
+              <div className="p-0 ml-5">
+                <h2 className="text-3xl font-bold leading-tight">{ghuser.name} </h2>
+              </div>
             </div>
-          );
-        })}
+            <div className="p-5">
+              <div>{ghuser.company}</div>
+              <div>{ghuser.name}</div>
+              <div>{ghuser.location}</div>
+            </div>
+          </>
+        ) : null}
+
       </div>
       <div>
 
