@@ -16,20 +16,20 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>{user} Repos</h1>
-      <div className=''>
+    <div className="text-left">
+      <h1 className="text-6xl font-bold underline">{user} Repos</h1>
+      <div className='mt-10'>
         {repos.map((rep) => {
           console.log('rep', rep);
           return (
-            <>
-              <h2>{rep.full_name}</h2>
+            <div className="my-5">
+              <h2 className="text-2xl font-bold">{rep.full_name}</h2>
               <p>
                 <a href={rep.html_url} target="_blank">{rep.html_url}</a>
               </p>
-              <div>{rep.language}</div>
+              <div className="inline-block rounded-md py2 px-2 text-sm bg-purple-800 text-zinc-200">{rep.language}</div>
               <div>⭐️{rep.stargazers_count}</div>
-            </>
+            </div>
           );
         })}
       </div>
