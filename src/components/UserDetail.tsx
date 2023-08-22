@@ -9,7 +9,6 @@ export function UserDetail({ user }: { user: GHUser; }) {
     async function getUserRepos({ username }: { username: string; }) {
       const res = await fetch(`https://api.github.com/users/${username}/repos?page=1&per_page=20&sort=updated`);
       const data = await res.json();
-      console.log('daat', data);
       setRepos(data);
     }
 
@@ -21,18 +20,24 @@ export function UserDetail({ user }: { user: GHUser; }) {
   }
 
   return (
-    <div className="text-left">
-      <h1 className="text-6xl font-bold underline">{user.login} Repos</h1>
-      <div className='mt-10'>
+    <div className="text-left text-slate-100">
+      <h2 className="text-2xl font-bold">{user.login} Repos</h2>
+      <div className='max-w-md divide-y divide-slate-300'>
         {repos?.map((rep, index) => {
           return (
-            <div className="my-5" key={index}>
-              <h2 className="text-2xl font-bold">{rep.full_name}</h2>
-              <p>
-                <a href={rep.html_url} target="_blank">{rep.html_url}</a>
+            <div className="mt-7" key={index}>
+              <h2 className="text-lg font-bold m-0">{rep.full_name}</h2>
+              <p className="m-0 p-0">
+                <a href={rep.html_url} target="_blank" className="text-slate-400 text-xs">
+                  {rep.html_url}
+                </a>
               </p>
-              <div className="inline-block rounded-md py2 px-2 text-sm bg-purple-800 text-zinc-200">{rep.language}</div>
-              <div>⭐️{rep.stargazers_count}</div>
+              <div className="flex flew-row mt-2">
+                {rep.language ? (
+                  <div className="inline-block rounded-md py-1 px-2 text-xs bg-purple-800 text-zinc-200">{rep.language}</div>
+                ) : null}
+                <div className="text-sm ml-5">⭐️{rep.stargazers_count}</div>
+              </div>
             </div>
           );
         })}
