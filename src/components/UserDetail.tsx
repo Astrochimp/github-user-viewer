@@ -21,7 +21,19 @@ export function UserDetail({ user }: { user: GHUser; }) {
 
   return (
     <div className="text-left text-slate-100">
-      <h2 className="text-2xl font-bold">{user.login} Repos</h2>
+      <div className='rounded-lg cursor-pointer mt-0 m-0 text-slate-600 p-3  hover:bg-zinc-900 hover:text-zinc-900 py-4 transition ease-in-out duration-300'>
+        <div className="flex flex-row justify-start items-center ">
+          <div className="p-0">
+            <img className='border-solid border-2 border-cyan-300 w-18 h-18 rounded-full' src={user.avatar_url} alt={user.name} width="150" height="150" />
+          </div>
+          <div className="p-0 ml-6">
+            <h2 className=" max-w-[150px] text-ellipsis text-3xl font-bold leading-tight text-cyan-300">{user.login} </h2>
+            <div className="text-lg text-zinc-300">{user.name}</div>
+            <div className="text-lg text-zinc-300">{user.company}</div>
+          </div>
+        </div>
+      </div>
+      <h2 className="text-3xl font-bold mt-10 text-cyan-500">Repos</h2>
       <div className='max-w-md divide-y divide-slate-300'>
         {repos?.map((rep, index) => {
           return (
