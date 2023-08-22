@@ -1,16 +1,23 @@
 import { useEffect, useState } from 'react';
 
+interface GHRepo {
+  full_name: string;
+  html_url: string;
+  stargazers_count: string;
+  language: string;
+}
+
 export function UserDetail({ user }: { user: string; }) {
-  const [repos, setRepos] = useState<[]>([]);
+  const [repos, setRepos] = useState<GHRepo[]>([]);
+
+  async function getUserRepos({ user }: { user: string; }) {
+    const res = await fetch(`https://api.github.com/users/${user}/`);
+    const data = await res.json();
+    setRepos(data);
+  }
 
   useEffect(() => {
-    async function getUser({ user }: { user: string; }) {
-      const res = await fetch(`https://api.github.com/users/${user}/`);
-      const data = await res.json();
-      setRepos(data);
-    }
-
-    getUser({ user });
+    getUserRepos({ user });
   }, []);
 
 
@@ -19,7 +26,6 @@ export function UserDetail({ user }: { user: string; }) {
       <h1 className="text-6xl font-bold underline">{user} Repos</h1>
       <div className='mt-10'>
         {repos.map((rep) => {
-          console.log('rep', rep);
           return (
             <div className="my-5">
               <h2 className="text-2xl font-bold">{rep.full_name}</h2>
@@ -31,9 +37,6 @@ export function UserDetail({ user }: { user: string; }) {
             </div>
           );
         })}
-      </div>
-      <div>
-
       </div>
     </div>
   );
