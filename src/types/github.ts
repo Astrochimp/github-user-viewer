@@ -12,4 +12,5 @@ export interface GHUser {
   location: string;
   avatar_url: string;
   login: string;
+  followers: string;
 }

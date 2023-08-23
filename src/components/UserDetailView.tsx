@@ -20,7 +20,7 @@ export function UserDetailView() {
   }, [userId]);
 
   return (
-    <div>
+    <div className="p-5">
       {user ? (
         <UserDetail user={user} />
       ) : (

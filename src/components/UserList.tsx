@@ -22,9 +22,8 @@ export function UserList() {
     setCurrentUser(user);
   }
 
-
   return (
-    <div className="flex flew-row">
+    <div className="w-full p-5">
       <ul>
         {ghuserList?.map((ghuser) => {
           return (

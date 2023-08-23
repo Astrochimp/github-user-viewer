@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { GHRepo, GHUser } from '../types/github';
 import { getUserRepos } from '../lib/services';
+import { Followers } from './Followers';
 
 
 export function UserDetail({ user }: { user: GHUser; }) {
@@ -33,6 +34,9 @@ export function UserDetail({ user }: { user: GHUser; }) {
           </div>
         </div>
       </div>
+
+      <Followers userId={user.login} total={user.followers} />
+
       <h2 className="text-3xl font-bold mt-10 text-cyan-500">Repos</h2>
       <div className='max-w-md divide-y divide-slate-300'>
         {repos?.map((rep, index) => {
