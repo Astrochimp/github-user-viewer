@@ -17,11 +17,11 @@ export function Orgs({ userId }: { userId: string; }) {
   }, [userId]);
 
   if (orgs.length === 0) {
-    return <></>;
+    return <div data-testid="orgs-wrapper-no-results"></div>;
   }
 
   return (
-    <div>
+    <div data-testid="orgs-wrapper">
       <h3 className="text-cyan-400 font-bold text-2xl">Organizations</h3>
       <div>
         <ul className="flex flex-row">

@@ -21,7 +21,7 @@ export function UserDetail({ user }: { user: GHUser; }) {
   }
 
   return (
-    <div className="text-left text-slate-100">
+    <div className="text-left text-slate-100" data-testid="user-detail-wrapper">
       <div className='rounded-lg cursor-pointer mt-0 m-0 text-slate-600 p-3  hover:bg-zinc-900 hover:text-zinc-900 py-4 transition ease-in-out duration-300'>
         <div className="flex flex-row justify-start items-center ">
           <div className="p-0">

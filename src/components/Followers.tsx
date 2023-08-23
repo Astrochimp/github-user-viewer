@@ -19,7 +19,7 @@ export function Followers({ userId, total }: { userId: string; total: string; })
 
 
   return (
-    <div>
+    <div data-testid="follower-wrapper">
       <h3 className="text-cyan-400 font-bold text-2xl">Followers <div className="inline-block bg-cyan-600 text-slate-100 text-sm py-1 px-2 rounded-md">{total}</div></h3>
       <ul className="flex flex-row">
         {followers?.map((ghuser) => {
