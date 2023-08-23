@@ -1,6 +1,7 @@
 import './App.css';
 import { UserList } from './components/UserList';
 import { UserDetailView } from './components/UserDetailView';
+import { NotFound } from './components/NotFound';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Routes location={location} key={location.pathname}>
         <Route index element={<UserList />} />
         <Route path="/user/:userId" element={<UserDetailView />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

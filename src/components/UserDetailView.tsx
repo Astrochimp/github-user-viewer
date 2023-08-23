@@ -24,7 +24,7 @@ export function UserDetailView() {
       {user ? (
         <UserDetail user={user} />
       ) : (
-        <div>
+        <div className="text-3xl text-slate-100 justify-center align-middle p-30">
           No user selected
         </div>
       )}
