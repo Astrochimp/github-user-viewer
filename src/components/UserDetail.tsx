@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
 import { GHRepo, GHUser } from '../types/github';
+import { getUserRepos } from '../lib/services';
 
 
 export function UserDetail({ user }: { user: GHUser; }) {
   const [repos, setRepos] = useState<GHRepo[]>([]);
 
   useEffect(() => {
-    async function getUserRepos({ username }: { username: string; }) {
-      const res = await fetch(`https://api.github.com/users/${username}/repos?page=1&per_page=20&sort=updated`);
-      const data = await res.json();
-      setRepos(data);
+    async function loadRepos() {
+      const repoData = await getUserRepos({ username: user.login });
+      setRepos(repoData);
     }
 
-    getUserRepos({ username: user.login });
+    loadRepos();
   }, [user]);
 
   if (!user) {
-    return <>No user</>;
+    return <div className="p-20 text-2xl">Please click on a user to view their details</div>;
   }
 
   return (
@@ -46,9 +46,9 @@ export function UserDetail({ user }: { user: GHUser; }) {
               </p>
               <div className="flex flew-row mt-2">
                 {rep.language ? (
-                  <div className="inline-block rounded-md py-1 px-2 text-xs bg-purple-800 text-zinc-200">{rep.language}</div>
+                  <div className="inline-block rounded-md py-1 px-2 text-xs bg-purple-800 text-zinc-200 mr-5">{rep.language}</div>
                 ) : null}
-                <div className="text-sm ml-5">⭐️{rep.stargazers_count}</div>
+                <div className="text-sm">⭐️{` `}{rep.stargazers_count}</div>
               </div>
             </div>
           );
