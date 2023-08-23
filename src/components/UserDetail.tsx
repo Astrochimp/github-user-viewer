@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { GHRepo, GHUser } from '../types/github';
 import { getUserRepos } from '../lib/services';
 import { Followers } from './Followers';
-
+import { Orgs } from './Orgs';
 
 export function UserDetail({ user }: { user: GHUser; }) {
   const [repos, setRepos] = useState<GHRepo[]>([]);
@@ -34,6 +34,8 @@ export function UserDetail({ user }: { user: GHUser; }) {
           </div>
         </div>
       </div>
+
+      <Orgs userId={user.login} />
 
       <Followers userId={user.login} total={user.followers} />
 

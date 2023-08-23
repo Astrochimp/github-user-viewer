@@ -7,6 +7,13 @@ export async function getUserRepos({ username }: { username: string }) {
   return await res.json();
 }
 
+export async function getUserOrgs({ username }: { username: string }) {
+  const res = await fetch(
+    `https://api.github.com/users/${username}/orgs?page=1&per_page=20&sort=updated`
+  );
+  return await res.json();
+}
+
 export async function getUserFollowers({ username }: { username: string }) {
   const res = await fetch(
     `https://api.github.com/users/${username}/followers?page=1&per_page=5`

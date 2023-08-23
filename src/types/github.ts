@@ -14,3 +14,11 @@ export interface GHUser {
   login: string;
   followers: string;
 }
+
+export interface GHOrgs {
+  id: string;
+  avatar_url: string;
+  url: string;
+  login: string;
+  repos_url: string;
+}
