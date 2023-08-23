@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { GHUser } from '../types/github';
-import { UserDetail } from './UserDetail';
 import { fetchAllUsers } from '../lib/services';
 import { Link } from 'react-router-dom';
 
 export function UserList() {
   const [ghuserList, setGhuserList] = useState<GHUser[]>([]);
   const githubusers: string[] = ['Astrochimp', 'delucis', 'fflaten', 'AlexTMjugador', 'subhamBharadwaz', 'lmatteis', 'leerob', 'shadcn'];
-  const [currentUser, setCurrentUser] = useState<GHUser>();
 
   useEffect(() => {
     async function loadAllUsers() {
@@ -17,10 +15,6 @@ export function UserList() {
 
     loadAllUsers();
   }, []);
-
-  function showRepos(user: GHUser) {
-    setCurrentUser(user);
-  }
 
   return (
     <div className="w-full p-5">
@@ -44,11 +38,6 @@ export function UserList() {
           );
         })}
       </ul>
-      <div className="p-10">
-        {currentUser ? (
-          <UserDetail user={currentUser} />
-        ) : null}
-      </div>
     </div>
   );
 }
