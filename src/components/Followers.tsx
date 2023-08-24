@@ -28,7 +28,7 @@ export function Followers({ userId, total }: { userId: string; total: string; })
               <Link to={`/user/${ghuser.login}`}>
                 <div className="flex flex-row justify-start items-center ">
                   <div className="p-0">
-                    <img className='border-solid border-2 border-cyan-300 w-18 h-18 rounded-full' src={ghuser.avatar_url} alt={ghuser.name} width="60" height="60" />
+                    <img data-testid="follower-image" className='border-solid border-2 border-cyan-300 w-18 h-18 rounded-full' src={ghuser.avatar_url} alt={ghuser.name} width="60" height="60" />
                   </div>
                 </div>
               </Link>

@@ -1,7 +1,9 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
 import { UserDetail } from "../src/components/UserDetail";
-import { GHUser } from '../src/types/github';
+import { BrowserRouter } from 'react-router-dom';
+import { GHRepo, GHUser } from '../src/types/github';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { act, render, screen, userEvent } from '../src/utils/test-utils';
 
 const user: GHUser = {
   id: '123',
@@ -13,9 +15,10 @@ const user: GHUser = {
   name: 'One',
 };
 
+
 describe('UserDetail', () => {
   it('renders UserDetail', () => {
-    render(<UserDetail user={user} />);
+    render(<BrowserRouter><UserDetail user={user} /></BrowserRouter>);
     const wrapper = screen.getByTestId('user-detail-wrapper');
     expect(wrapper).toBeInTheDocument();
   });

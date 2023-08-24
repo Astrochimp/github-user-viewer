@@ -31,7 +31,7 @@ export function Orgs({ userId }: { userId: string; }) {
                 <a href={org.url} target="_blank">
                   <div className="flex flex-row justify-start items-center ">
                     <div className="p-0">
-                      <img className='border-solid border-2 border-cyan-300 w-18 h-18 rounded-full' src={org.avatar_url} alt={org.login} width="60" height="60" />
+                      <img data-testid="org-image" className='border-solid border-2 border-cyan-300 w-18 h-18 rounded-full' src={org.avatar_url} alt={org.login} width="60" height="60" />
                     </div>
                   </div>
                 </a>
