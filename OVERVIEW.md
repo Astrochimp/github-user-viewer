@@ -4,12 +4,12 @@ Please add a write-up of your implementation here. Please also include any instr
 
 ## Project Overview
 
-Thanks for the opportunity to build out this code sample. The project was funt o build.
+Thanks for the opportunity to build out this code sample. The project was fun to build.
 My approach was a mobile first UI using React, Tailwind for CSS, Vite and Vitest.
 
 ### Initial setup and configuration
 
-The boilerplate project was setup in Create React App. While CRA used to be the go to method for starting new Reatc projects, it is no longer the case.
+The boilerplate project was setup in Create React App. While CRA used to be the go to method for starting new React projects, it is no longer the case.
 
 New recommendations are to use Vite or a framework such as Next.js or Remix Run etc.
 
@@ -23,7 +23,7 @@ The app is built using a mobile first approach. This translates over to the desk
 
 ### Modular approach
 
-The project is split out into smaller components. Each component is responsible for showing very specific info based on the userId. Followers, Orgs and Repos a split into their own components to make test easier and managing each section easier.
+The project is split out into smaller components. Each component is responsible for showing very specific info based on the userId. Followers, Orgs and Repos a split into their own components to make testing easier and managing each section easier.
 
 ### Tailwind
 
@@ -31,7 +31,7 @@ Tailwind has become a popular was to style React apps. I recenlty converted over
 
 ### Testing
 
-Setup tests and mock functions using vite.
+Setup tests and mock functions using vitest.
 
 ### Maintainability
 
